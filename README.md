@@ -35,4 +35,5 @@
 
 ### Preguntas:
 
-1. ¿Cómo cambiar el level error del docker? Evitar grabar logs
+1. ¿Cómo cambiar el level error del docker? Evitar grabar logs.
+2. Interface gráfica para visualizar contianers.
