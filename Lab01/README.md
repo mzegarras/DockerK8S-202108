@@ -109,8 +109,9 @@ cd dir01
 
 ### Reto 01
 
-1. Crear un archivo galaxy.log con valores del 1 - 5 (vi)
-2. Buscar cadenas de texto que contengan 3 (cat|grep)
+1. Crear un archivo /tmp/galaxy.log con valores del 1 - 500 (vi)
+2. Buscar cadenas de texto que contengan 5 (cat|grep)
+3. Pintar las 20 últimas líneas
 
 ```bash
 for var in {1..5};do  echo "valor de var $var" >> data.txt;  done;

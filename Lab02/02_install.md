@@ -11,7 +11,7 @@
 
 1. Instalar última versión docker
     ```console
-    sudo dnf install docker-ce --nobest
+    sudo dnf install -y docker-ce --nobest
     ```
 1. Iniciar docker cuando iniciar el SO
     ```console
