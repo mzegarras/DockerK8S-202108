@@ -32,3 +32,7 @@
     ```console
     ssh centos@host_ip_address
     ```
+
+### Preguntas:
+
+1. ¿Cómo cambiar el level error del docker? Evitar grabar logs
