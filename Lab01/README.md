@@ -132,6 +132,7 @@ head -20 galaxy.log
 
 cd ~
 mkdir -p ./apps/app01/log
+cd ./apps/app01/log
 date > server01.log
 cp ./server01.log ~
 cp ./server01.log ~/server01-backup.log
