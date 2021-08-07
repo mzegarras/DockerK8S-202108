@@ -51,5 +51,6 @@
     sudo groupadd docker
     sudo chmod 666 /var/run/docker.sock
     sudo service docker restart
+    docker run -p 8080:80 nginx
     ```
 
