@@ -118,7 +118,7 @@ cd /tmp
 for i in `seq 1 500`;do echo $i >> galaxy.log;done
 cat galaxy.log | grep 5
 tail -20 galaxy.log
-
+head -20 galaxy.log
 ```
 
 
@@ -130,6 +130,12 @@ tail -20 galaxy.log
 
 ```bash
 
+cd ~
+mkdir -p ./apps/app01/log
+date > server01.log
+cp ./server01.log ~
+cp ./server01.log ~/server01-backup.log
+
 mkdir apps
 cd apps
 mkdir app01
@@ -137,10 +143,6 @@ mkdir log
 cd ~
 cd ~/apps/app01/log
 
-
-mkdir -p ~/apps/app01/log
-touch ~/apps/app01/log/server01.log
-cp ~/apps/app01/log/server01.log ./server01.log
 
 ```
 ### Remover contenido
