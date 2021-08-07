@@ -114,12 +114,11 @@ cd dir01
 3. Pintar las 20 últimas líneas
 
 ```bash
-for var in {1..5};do  echo "valor de var $var" >> data.txt;  done;
-cat data.txt |grep 3
+cd /tmp
+for i in `seq 1 500`;do echo $i >> galaxy.log;done
+cat galaxy.log | grep 5
+tail -20 galaxy.log
 
-echo "l1" > data01.txt
-echo "l2" >> data01.txt
-echo "l3" >> data01.txt
 ```
 
 
