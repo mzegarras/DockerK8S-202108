@@ -25,6 +25,8 @@ docker logs <<ID_container>> -f
 ctrl + c
 
 
+
+
 ```
 
 ### Reto 01
