@@ -36,4 +36,9 @@
 ### Preguntas:
 
 1. ¿Cómo cambiar el level error del docker? Evitar grabar logs.
+
 2. Interface gráfica para visualizar contianers.
+
+    ```console
+    docker run -d -p 9000:9000 --restart always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
+    ```
