@@ -127,7 +127,7 @@
     docker ps
     docker ps -a
     docker ps -aq
-    sudo docker rm $(sudo docker ps -aq) -f
+    docker rm $(docker ps -aq) -f
     ```
 
 1. Liberar recursos
