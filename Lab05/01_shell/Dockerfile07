@@ -1,0 +1,17 @@
+FROM alpine
+
+
+ARG PATH_APPS
+ARG NAME_APP
+ARG FULL_APP=${PATH_APPS}/${NAME_APP}
+ENV PATH_FILES_ENV=${FULL_APP}
+
+RUN echo ${FULL_APP}
+RUN mkdir ${FULL_APP}
+ADD demo03.sh ${FULL_APP}/app.sh
+RUN chmod +x ${FULL_APP}/app.sh
+
+ENV NAME "Galaxy"
+ENV LAST_NAME "Training"
+
+ENTRYPOINT ${PATH_FILES_ENV}/app.sh
