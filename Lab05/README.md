@@ -11,8 +11,11 @@
 * Imagen shell01
     ```bash
     docker build -t shell01 .
+    docker build -t shell01 . --progress=plain --no-cache
     docker run shell01
     ```
+    * --progress=plain option as docker defaults to auto
+    * --no-cache=it is necessary to rebuild the container
 
 * Imagen shell02
     ```bash
