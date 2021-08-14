@@ -11,6 +11,7 @@
 1. Pull
     ```bash
     docker pull centos
+    docker pull redis
     
     ``` 
 
