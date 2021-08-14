@@ -55,6 +55,16 @@
     ```
 
 
+* Imagen shell07
+
+    ```bash
+    docker build -t shell07 \
+    --build-arg PATH_APPS=/opt \
+    --build-arg NAME_APP=APP01  \
+    -f Dockerfile07 .
+    docker run shell07
+    ```
+
 * Imagen web 1.0
 
     ```bash
