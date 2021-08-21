@@ -4,5 +4,6 @@ EXPOSE 8090
 
 ADD ./Rest02-2.0-SNAPSHOT.jar app.jar
 ADD ./entrypoint.sh entrypoint.sh
+RUN chmod +x entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
