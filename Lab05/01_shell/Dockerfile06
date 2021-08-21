@@ -2,6 +2,11 @@ FROM ubuntu
 #RUN apk update
 #RUN apk add curl
 #RUN apk update && apk add curl
-RUN apt-get update
-RUN apt-get install -y curl
-ENTRYPOINT ["curl", "ifconfig.me"]
+RUN apt-get update && \
+    apt-get install -y curl && \
+    apt-get install -y git && \
+    mkdir /app
+
+RUN ls -lta /app
+
+ENTRYPOINT ["curl","-v", "ifconfig.me"]

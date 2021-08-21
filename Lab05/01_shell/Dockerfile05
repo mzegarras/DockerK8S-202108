@@ -1,6 +1,12 @@
 FROM alpine
 #RUN apk update
-#RUN apk add curl
-RUN apk update && apk add curl
-ENTRYPOINT ["curl", "ifconfig.me"]
+#RUN apk add curl -y
+RUN apk update && \
+    apk add curl  && \
+    apk add git && \
+    mkdir /app
+
+#RUN ls -lta /
+
+ENTRYPOINT ["curl","-v", "ifconfig.me"]
 
