@@ -261,3 +261,13 @@
     curl http://localhost:8888/encrypt -H 'Content-Type: text/plain' -d 'password'
     curl http://localhost:8888/decrypt -H 'Content-Type: text/plain' -d '<<paso-previo>>'
 ```
+
+## Repo Azure
+1. Datos
+    - server: galaxy202108.azurecr.io
+    - user: galaxy202108
+    - password: eB6rhDGWghM9/7Ec7eV6xiMuMQY3Oi5w
+1. Ejemplo:
+    - Manuel Zegarra [3 NOMRE + APELIIDO PATERNO]
+    - manzegarra/apinode:1.0.0
+    - manzegarra/config-server:1.0.0
