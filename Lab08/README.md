@@ -200,7 +200,7 @@
     -d mongo-express
     ```
 
-1. Java01
+1. Java - Load balancer
     ```bash
 
     docker run \
