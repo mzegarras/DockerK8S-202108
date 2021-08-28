@@ -50,7 +50,12 @@
     
     docker inspect galaxy-net
 
-    docker network connect galaxy-net a10efce35e13
+    docker run --net galaxy-net --name web02 -d nginx
+    docker run --net galaxy-net --name web03 -d nginx
+    docker run  --name web04 -d nginx
+
+    docker network connect galaxy-net web04
+    docker network disconnect bridge web04
 
     docker network rm galaxy-net 
 
