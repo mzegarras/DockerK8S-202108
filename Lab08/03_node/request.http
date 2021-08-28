@@ -1,11 +1,11 @@
 
 ### GET programs
 
-GET http://localhost:3000/programs HTTP/1.1
+GET http://localhost:9060/programs HTTP/1.1
 
 
 ### Create program
-POST http://localhost:3000/programs HTTP/1.1
+POST http://localhost:9060/programs HTTP/1.1
 content-type: application/json
 
 {
