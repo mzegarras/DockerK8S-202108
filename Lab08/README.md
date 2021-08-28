@@ -43,7 +43,7 @@
     docker network ls
     docker network create galaxy-net
 
-    docker run -d --net galaxy-net --name web01 -d nginx 
+    docker run --net galaxy-net --name web01 -d nginx 
     docker run -it --net galaxy-net  busybox sh
 
     wget -q -O - http://web01:80/
