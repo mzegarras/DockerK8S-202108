@@ -103,13 +103,15 @@
         wordpress:php8.0
     ```
 
-## Lab Java 
+## Lab Java 01
+1. cd 01_java
+
 1. Network
     ```bash
     docker network create ms-net
     ```
 
-2. Database
+1. Database
     ```bash
     docker run --name mongodb -e MONGO_INITDB_ROOT_USERNAME=root \
         -e MONGO_INITDB_ROOT_PASSWORD=pwd1234 \
@@ -154,7 +156,7 @@
         --net ms-net \
         -d reactivedemo:latest
     
-    docker run --name proxyserver \
+    docker run --name proxyserver01 \
         -v $PWD/nginx.conf:/etc/nginx/nginx.conf:ro \
         --net ms-net \
         -p 8083:9060 -d nginx
@@ -171,17 +173,86 @@
     docker run -d --network host nginx
     ```
 
+## Lab Java 02
+1. cd 02_java
 
+1. Network
+    ```bash
+    docker network create ms02-net
+    ```
+
+1. Database
+    ```bash
+    docker run --name mongodb \
+        -e MONGO_INITDB_ROOT_USERNAME=root \
+        -e MONGO_INITDB_ROOT_PASSWORD=pwd1234 \
+        -e MONGO_INITDB_DATABASE=shop \
+        --net ms02-net \
+        -d mongo
+    
+    docker run --name mongo-express \
+    -e ME_CONFIG_MONGODB_ADMINUSERNAME=root \
+    -e ME_CONFIG_MONGODB_ADMINPASSWORD=pwd1234 \
+    -e ME_CONFIG_MONGODB_ENABLE_ADMIN=true \
+    -e ME_CONFIG_MONGODB_SERVER=mongodb \
+    -p 9081:8081 \
+    --net ms02-net \
+    -d mongo-express
+    ```
+
+1. Java - Load balancer
+    ```bash
+
+    docker run \
+        --name reactiveapi01 \
+        -v $PWD/application.yml:/application.yml \
+        --net ms02-net \
+        -d reactivedemo:latest
+
+    docker run \
+        --name reactiveapi02 \
+        -v $PWD/application.yml:/application.yml \
+        --net ms02-net \
+        -d reactivedemo:latest
+     
+    docker run --name proxyserver02 \
+        -v $PWD/nginx.conf:/etc/nginx/nginx.conf:ro \
+        --net ms02-net \
+        -p 9083:9060 -d nginx
+
+    curl http://localhost:9083/listar
+    curl http://localhost:9083/api/productos    
+    ```
 
 ## Reto node
-    1. Generar la imagen del proyecto 03_node con el nombre apinode:1.0.0
-        * PORT: 3000
-        * URL_DB: 'mongodb://localhost:27017/interfaces'
-        * URL_DB_USER:
-        * URL_DB_PWD:
-    1. Usar ./03_node/Dockerfile
-    1. Crear la red node-net
-    1. Implementar el diseño proxy-reverse:9090->backend(proyecto previo)-->mongo
-    1. Para admins pudan usar mongo-express
-    1. Publicar las imágenes en repositorio
-    1. Puede probar las apis request.http
+1. Generar la imagen del proyecto 03_node con el nombre apinode:1.0.0
+1. Ports: 3000:3000
+1. Environment
+    * PORT: 3000
+    * URL_DB: 'mongodb://localhost:27017/interfaces'
+    * URL_DB_USER:
+    * URL_DB_PWD:
+1. Usar ./03_node/Dockerfile
+1. Crear la red node-net
+1. Implementar el diseño proxy-reverse:9090->backend(proyecto previo)-->mongo
+1. Para admins pudan usar mongo-express
+1. Publicar las imágenes en repositorio
+1. Puede probar las apis request.http
+
+## Reto config-server
+1. Generar la imagen del proyecto 04_config con el nombre config-server:1.0.0
+1. Ports: 8888:8888
+1. Volumes: ./config-server.jks:/config-server.jks
+1. Environment
+    - GIT_URI: "https://github.com/mzegarras/ms-configuration.git"
+    - GIT_USER: "mzegarra"
+    - GIT_PWD: ""
+    - KEYSTORE_PWD: "YOU_KEYSTORE_PASSWORD"
+    - KEYSTORE_ALIAS: "YOU_CONFIG_SERVER_KEY"
+    - KEYSTORE_SECRET: "YOU_KEYSTORE_PASSWORD"
+1. Test
+```bash
+    curl http://localhost:8888/ms-accounts/default
+    curl http://localhost:8888/encrypt -H 'Content-Type: text/plain' -d 'password'
+    curl http://localhost:8888/decrypt -H 'Content-Type: text/plain' -d '<<paso-previo>>'
+```
