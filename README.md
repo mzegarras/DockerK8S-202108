@@ -43,4 +43,4 @@
     docker run -d -p 9000:9000 --restart always -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
     ```
 3. Container con certificados autofirmados y sitio web
-4. User de volume en dockerfile
+4. User de volume en dockerfile - secrets
